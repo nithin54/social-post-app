@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: social-post-app
+    env: node
+    buildCommand: npm install && npm run install:all && npm run build
+    startCommand: npm start
+    envVars:
+      - key: JWT_SECRET
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: REQUIRE_MONGODB
+        value: "false"

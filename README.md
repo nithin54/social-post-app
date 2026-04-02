@@ -152,20 +152,28 @@ npm test
 
 ## Recommended Deployment Setup
 
-### Render for both frontend and backend
+### Frontend: Vercel
 
-This repository is now configured for a two-service Render Blueprint deployment:
+This repository is already configured for Vercel frontend deployment with:
 
-- `social-post-app-backend`
-  - Node web service
-  - root directory: `backend`
-- `social-post-app-frontend`
-  - static site
-  - root directory: `frontend`
+- root directory: `frontend`
+- SPA routing config in `frontend/vercel.json`
+
+Set this environment variable in Vercel:
+
+```env
+REACT_APP_API_URL=https://your-render-backend-url.onrender.com/api
+```
+
+### Backend: Render
+
+This repository is configured for backend-only Render deployment through `render.yaml`.
+
+- service name: `social-post-app-backend`
+- root directory: `backend`
+- health check: `/api/health`
 
 Set these environment variables in Render:
-
-#### Backend
 
 ```env
 JWT_SECRET=your-long-random-secret
@@ -173,13 +181,13 @@ MONGODB_URI=your-mongodb-uri
 REQUIRE_MONGODB=false
 ```
 
-#### Frontend
+### Database: MongoDB Atlas
+
+Use MongoDB Atlas for persistent production data. Add the Atlas connection string to Render as:
 
 ```env
-REACT_APP_API_URL=https://your-render-backend-url.onrender.com/api
+MONGODB_URI=your-atlas-connection-string
 ```
-
-The frontend static site is configured for React SPA routing through `render.yaml`.
 
 ## Current Development Notes
 

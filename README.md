@@ -150,6 +150,29 @@ npm test
 - For full-stack deployment, host the backend on a platform like Render, Railway, or Cyclic and point `REACT_APP_API_URL` to the deployed API.
 - For production, use a real MongoDB instance such as MongoDB Atlas.
 
+## Recommended Deployment Setup
+
+### Option 1: Render for backend, Vercel for frontend
+
+This is the recommended setup for this repository.
+
+- Deploy `backend/` to Render as a web service
+- Deploy `frontend/` to Vercel as a separate project from the same GitHub repo
+- In Vercel, set:
+
+```env
+REACT_APP_API_URL=https://your-render-backend-url.onrender.com/api
+```
+
+### Option 2: Vercel monorepo projects
+
+Vercel supports monorepos, so you can also import the same GitHub repository twice:
+
+- one Vercel project with `frontend` as the root directory
+- one Vercel project with `backend` as the root directory
+
+If you deploy the frontend on Vercel, `frontend/vercel.json` is already configured for SPA routing.
+
 ## Current Development Notes
 
 - Image uploads are currently stored as `data:` URLs.

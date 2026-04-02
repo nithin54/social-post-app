@@ -1,0 +1,16 @@
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+frontend/build/
+backend/coverage/
+
+.codex-logs/
+.qodo/
+.sixth/
+
+backend/.env
+frontend/.env
+
+.DS_Store
+Thumbs.db

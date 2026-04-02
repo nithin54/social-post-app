@@ -4,6 +4,8 @@ A full-stack social media app built with React, Express, and MongoDB-ready persi
 
 Repository: `https://github.com/nithin54/social-post-app`
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nithin54/social-post-app)
+
 ## Features
 
 - User signup and login with JWT authentication

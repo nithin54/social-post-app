@@ -152,26 +152,34 @@ npm test
 
 ## Recommended Deployment Setup
 
-### Option 1: Render for backend, Vercel for frontend
+### Render for both frontend and backend
 
-This is the recommended setup for this repository.
+This repository is now configured for a two-service Render Blueprint deployment:
 
-- Deploy `backend/` to Render as a web service
-- Deploy `frontend/` to Vercel as a separate project from the same GitHub repo
-- In Vercel, set:
+- `social-post-app-backend`
+  - Node web service
+  - root directory: `backend`
+- `social-post-app-frontend`
+  - static site
+  - root directory: `frontend`
+
+Set these environment variables in Render:
+
+#### Backend
+
+```env
+JWT_SECRET=your-long-random-secret
+MONGODB_URI=your-mongodb-uri
+REQUIRE_MONGODB=false
+```
+
+#### Frontend
 
 ```env
 REACT_APP_API_URL=https://your-render-backend-url.onrender.com/api
 ```
 
-### Option 2: Vercel monorepo projects
-
-Vercel supports monorepos, so you can also import the same GitHub repository twice:
-
-- one Vercel project with `frontend` as the root directory
-- one Vercel project with `backend` as the root directory
-
-If you deploy the frontend on Vercel, `frontend/vercel.json` is already configured for SPA routing.
+The frontend static site is configured for React SPA routing through `render.yaml`.
 
 ## Current Development Notes
 
